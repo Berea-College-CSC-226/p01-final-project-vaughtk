@@ -20,11 +20,12 @@ helped you, AI tools you've used, and any other resources that are not solely yo
 
 ## Milestone 1: Setup, Planning, Design
 
-❗️**Title**: `What is the title of your project? Be creative! Replace this block of text.`
+❗️**Title**: TurtleBrush Software
 
-❗**Purpose**: `In a single sentence, describe WHAT your project will do. Replace this block of text.`
+❗**Purpose**: This program will enable the turtle to be controlled using GUI elements, rather than manually inserted code.
+                It will feature 4 arrows, a size changer and possibly a color changer and undo button.
 
-❗️**Source Assignment(s)**: `List which original assignments you will base your project on? Replace this block of text.`
+❗️**Source Assignment(s)**: HW03: Fully Functional Gitty Psychedelic Robotic Turtles
 
 ❗️**CRC Card(s)**:
   - Create a CRC card for each class that your project will implement.
@@ -43,7 +44,7 @@ branch) as they work. When you need to bring each others branches together, do s
 into your own, following the process we've discussed in previous assignments: 
 
 ```
-    Branch 1 name: _____________
+    Branch 1 name: VaughtK
     Branch 2 name: _____________
 ```
 ---
