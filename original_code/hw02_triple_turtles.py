@@ -80,6 +80,24 @@ box_turtle.forward(25)
 box_turtle.right(90)
 box_turtle.forward(25)
 
+box_turtle.penup()
+
+box_turtle.right(180)
+box_turtle.forward(40)
+box_turtle.forward(15)
+
+box_turtle.pendown()
+
+box_turtle.forward(15)
+box_turtle.forward(-15)
+box_turtle.left(90)
+box_turtle.forward(25)
+
+box_turtle.left(90)
+box_turtle.forward(50)
+
+
+
 
 
 wn.exitonclick()                        # Closes the program when a user clicks in the window
