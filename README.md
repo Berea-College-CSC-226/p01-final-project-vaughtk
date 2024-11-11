@@ -73,7 +73,8 @@ Indicate what percentage of the project you have left to complete and how confid
   before the deadline.
 
 ```
-    **Replace this text with your reflection
+    I feel very confident, provided I can combine movement controls from Legend of Tuna with a drawing GUI.
+    Just controlling a Turtle with the arrow keys and turning the brush on and off with keyboard inputs would be enough.
 ```
 
 ---
