@@ -13,6 +13,10 @@
 # Attribution-Noncommercial-Share Alike 3.0 United States License.
 ######################################################################
 import turtle                           # allows us to use the turtles library
+from asyncio import wait_for
+from datetime import time
+
+from pygame.time import delay
 
 height = 100
 width = 100
@@ -63,41 +67,64 @@ box_turtle.left(90)
 box_turtle.forward(125)
 box_turtle.left(90)
 box_turtle.forward(270)
-box_turtle.forward(-260)
-box_turtle.left(90)
+box_turtle.forward(-210)
 
 box_turtle.penup()
 
-box_turtle.forward(40)
 
-box_turtle.pendown()
-
-box_turtle.forward(50)
-box_turtle.right(90)
-box_turtle.forward(25)
-box_turtle.right(90)
-box_turtle.forward(25)
-box_turtle.right(90)
-box_turtle.forward(25)
-
-box_turtle.penup()
-
-box_turtle.right(180)
-box_turtle.forward(40)
+box_turtle.forward(-45)
+box_turtle.left(90)
 box_turtle.forward(15)
 
+# write text
+# move turtle
+
+box_turtle.write("PEN-T", font=("Matrix II",
+                                    60, "normal"))
+delay(800)
+box_turtle.color('gray')
+box_turtle.write("PEN-T", font=("Matrix II",
+                                    60, "normal"))
+delay(200)
+box_turtle.color('light gray')
+box_turtle.write("PEN-T", font=("Matrix II",
+                                    60, "normal"))
+delay(200)
 box_turtle.pendown()
+box_turtle.pensize(1500)
+box_turtle.color('white')
+box_turtle.forward(1)
+box_turtle.pensize(2)
+box_turtle.color('black')
+'''
 
-box_turtle.forward(15)
-box_turtle.forward(-15)
-box_turtle.left(90)
-box_turtle.forward(25)
+----FROM T12----
 
-box_turtle.left(90)
-box_turtle.forward(50)
+import turtle
 
+class ClickyTurtle:
+    def __init__(self):
+        self.wn = turtle.Screen()
+        self.wn.setup(400,500)
+        self.wn.title("How to handle mouse clicks on the window!")
+        self.wn.bgcolor("lightgreen")
+        self.tess = turtle.Turtle()
+        self.tess.color("purple")
+        self.tess.pensize(3)
+        self.tess.shape("circle")
 
+        # NOTICE that the screen is responding to the click events!
+        self.wn.onclick(self.h1)      # Wire up a click handler to the window.
 
+        self.wn.mainloop()
+
+    def h1(self, x, y):
+        self.tess.goto(x, y)
+
+def main():
+    c = ClickyTurtle()
+main()
+'''
 
 
 wn.exitonclick()                        # Closes the program when a user clicks in the window
