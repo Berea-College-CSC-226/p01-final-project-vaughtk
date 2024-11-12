@@ -96,21 +96,19 @@ box_turtle.color('white')
 box_turtle.forward(1)
 box_turtle.pensize(2)
 box_turtle.color('black')
-'''
 
-----FROM T12----
 
-import turtle
 
+#----FROM T12----
 class ClickyTurtle:
     def __init__(self):
         self.wn = turtle.Screen()
-        self.wn.setup(400,500)
-        self.wn.title("How to handle mouse clicks on the window!")
-        self.wn.bgcolor("lightgreen")
+        self.wn.setup(600,600)
+        self.wn.title("Draw")
+        self.wn.bgcolor("white")
         self.tess = turtle.Turtle()
         self.tess.color("purple")
-        self.tess.pensize(3)
+        self.tess.pensize(2)
         self.tess.shape("circle")
 
         # NOTICE that the screen is responding to the click events!
@@ -124,7 +122,6 @@ class ClickyTurtle:
 def main():
     c = ClickyTurtle()
 main()
-'''
 
 
 wn.exitonclick()                        # Closes the program when a user clicks in the window
