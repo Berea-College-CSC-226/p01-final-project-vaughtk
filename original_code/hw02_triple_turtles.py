@@ -18,6 +18,10 @@ from datetime import time
 
 from pygame.time import delay
 
+import tkinter as tk       # Python's most commonly used GUI package.
+
+state_stack = [] # for undo function
+
 height = 100
 width = 100
 depth = 15
@@ -79,15 +83,15 @@ box_turtle.forward(15)
 # write text
 # move turtle
 
-box_turtle.write("PEN-T", font=("Matrix II",
+box_turtle.write("T-PEN", font=("Matrix II",
                                     60, "normal"))
 delay(800)
 box_turtle.color('gray')
-box_turtle.write("PEN-T", font=("Matrix II",
+box_turtle.write("T-PEN", font=("Matrix II",
                                     60, "normal"))
 delay(200)
 box_turtle.color('light gray')
-box_turtle.write("PEN-T", font=("Matrix II",
+box_turtle.write("T-PEN", font=("Matrix II",
                                     60, "normal"))
 delay(200)
 box_turtle.pendown()
@@ -95,13 +99,12 @@ box_turtle.pensize(1500)
 box_turtle.color('white')
 box_turtle.forward(1)
 box_turtle.pensize(2)
-box_turtle.color('black')
-
-
+#Box Turtle should now be invisible
 
 #----FROM T12----
 class ClickyTurtle:
     def __init__(self):
+        self.h1 = None
         self.wn = turtle.Screen()
         self.wn.setup(600,600)
         self.wn.title("Draw")
@@ -113,15 +116,27 @@ class ClickyTurtle:
 
         # NOTICE that the screen is responding to the click events!
         self.wn.onclick(self.h1)      # Wire up a click handler to the window.
-
         self.wn.mainloop()
 
-    def h1(self, x, y):
-        self.tess.goto(x, y)
+def save_state():
+    state = {
+    'position': turtle.pos(),
+    'pen_color': turtle.pencolor(),
+    'pen_state': turtle.isdown()
+    }
+    state_stack.append(state)
+
+def undo(): #run through all the data recorded by save_state and restore them in sequence.
+    if state_stack:
+        last_state = state_stack.pop()
+        turtle.penup()
+        turtle.goto(last_state['position'])
+        if last_state['pen_state']:
+            turtle.pendown()
+        turtle.pencolor(last_state['pen_color'])
 
 def main():
     c = ClickyTurtle()
 main()
-
 
 wn.exitonclick()                        # Closes the program when a user clicks in the window
