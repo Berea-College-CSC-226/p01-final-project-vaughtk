@@ -26,6 +26,7 @@ height = 100
 width = 100
 depth = 15
 turtle.speed(0)
+turtle.color('white')
 # All the colors to use; the rows loop will select a color on each iteration
 colors = ['purple', 'blue', 'green', 'yellow', 'orange', 'red', 'white']
 
@@ -101,22 +102,6 @@ box_turtle.forward(1)
 box_turtle.pensize(2)
 #Box Turtle should now be invisible
 
-#----FROM T12----
-class ClickyTurtle:
-    def __init__(self):
-        self.h1 = None
-        self.wn = turtle.Screen()
-        self.wn.setup(600,600)
-        self.wn.title("Draw")
-        self.wn.bgcolor("white")
-        self.tess = turtle.Turtle()
-        self.tess.color("purple")
-        self.tess.pensize(2)
-        self.tess.shape("circle")
-
-        # NOTICE that the screen is responding to the click events!
-        self.wn.onclick(self.h1)      # Wire up a click handler to the window.
-        self.wn.mainloop()
 
 def save_state():
     state = {
@@ -133,10 +118,33 @@ def undo(): #run through all the data recorded by save_state and restore them in
         turtle.goto(last_state['position'])
         if last_state['pen_state']:
             turtle.pendown()
-        turtle.pencolor(last_state['pen_color'])
+        turtle.pencolor(last_state['pen_color'])#----FROM T12----
+
+#Clicky Turtle is from T12  events and guis
+
+class ClickyTurtle:
+    def __init__(self):
+        self.wn = turtle.Screen()
+        self.wn.setup(700,700)
+        self.wn.title("T-PEN")
+        self.wn.bgcolor("lightgreen")
+        self.tess = turtle.Turtle()
+        self.tess.color("Black")
+        self.tess.pensize(1)
+        self.tess.turtlesize(0.5)
+        self.tess.shape("circle")
+
+        # NOTICE that the screen is responding to the click events!
+        self.wn.onclick(self.h1)      # Wire up a click handler to the window.
+
+        self.wn.mainloop()
+
+    def h1(self, x, y):
+        self.tess.goto(x, y)
 
 def main():
     c = ClickyTurtle()
+
 main()
 
 wn.exitonclick()                        # Closes the program when a user clicks in the window
