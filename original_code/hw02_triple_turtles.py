@@ -15,6 +15,7 @@
 import turtle                           # allows us to use the turtles library
 from asyncio import wait_for
 from datetime import time
+from turtle import Turtle
 
 from pygame.time import delay
 
@@ -34,7 +35,7 @@ colors = ['purple', 'blue', 'green', 'yellow', 'orange', 'red', 'white']
 wn = turtle.Screen()                    # creates a graphics window
 
 box_turtle = turtle.Turtle()            # create a turtle named myturtle
-box_turtle.speed(10)
+box_turtle.speed(0)
 box_turtle.penup()
 box_turtle.shape('circle')              # possible shapes are 'arrow', 'turtle', 'circle', 'square', 'triangle', 'classic'
 box_turtle.shapesize(5)
@@ -102,23 +103,9 @@ box_turtle.forward(1)
 box_turtle.pensize(2)
 #Box Turtle should now be invisible
 
-
-def save_state():
-    state = {
-    'position': turtle.pos(),
-    'pen_color': turtle.pencolor(),
-    'pen_state': turtle.isdown()
-    }
-    state_stack.append(state)
-
-def undo(): #run through all the data recorded by save_state and restore them in sequence.
-    if state_stack:
-        last_state = state_stack.pop()
-        turtle.penup()
-        turtle.goto(last_state['position'])
-        if last_state['pen_state']:
-            turtle.pendown()
-        turtle.pencolor(last_state['pen_color'])#----FROM T12----
+#-------------------------------------
+# Main Program Start
+#-------------------------------------
 
 #Clicky Turtle is from T12  events and guis
 
@@ -144,6 +131,201 @@ class ClickyTurtle:
 
 def main():
     c = ClickyTurtle()
+
+def UndoSave():
+    "Creates a Savestate"
+    print("Save Function Placeholder")
+
+    state = {
+    'position': turtle.pos(),
+    'pen_color': turtle.pencolor(),
+    'pen_state': turtle.isdown()
+    }
+    state_stack.append(state)
+
+
+def UndoLoad():
+    "Loads A Savestate"
+    print("Load Function Placeholder")
+
+    if state_stack:
+        last_state = state_stack.pop()
+        turtle.penup()
+        turtle.goto(last_state['position'])
+        if last_state['pen_state']:
+            turtle.pendown()
+        turtle.pencolor(last_state['pen_color'])#----FROM T12----
+
+
+def Clear():
+    "Simulates erasing by drawing with a very, very large turtle that matches the background color."
+    print("Clear Function Placeholder")
+
+def PenUp():
+    "Makes Pen Stop Drawing"
+    print("PenUp Function Placeholder")
+    turtle.penup()
+
+def PenDown():
+    "Makes Pen Resume Drawing"
+    print("PenDown Function Placeholder")
+    turtle.pendown()
+
+def PenColor():
+    "Changes Pen Color"
+    print("PenColor Function Placeholder")
+    #    colors = ['purple', 'blue', 'green', 'yellow', 'orange', 'red', 'white']
+    #    box_turtle.color(colors[row])       # Set the turtles color on each row
+
+root = tk.Tk()
+
+button_save = tk.Button(root,
+                   text="Save",
+                   command=UndoSave,
+                   activebackground="blue",
+                   activeforeground="white",
+                   anchor="center",
+                   bd=3,
+                   bg="lightgray",
+                   cursor="hand2",
+                   disabledforeground="gray",
+                   fg="black",
+                   font=("Arial", 12),
+                   height=2,
+                   highlightbackground="black",
+                   highlightcolor="green",
+                   highlightthickness=2,
+                   justify="center",
+                   overrelief="raised",
+                   padx=10,
+                   pady=5,
+                   width=15,
+                   wraplength=100)
+
+button_load = tk.Button(root,
+                   text="Load",
+                   command=UndoLoad(),
+                   activebackground="blue",
+                   activeforeground="white",
+                   anchor="center",
+                   bd=3,
+                   bg="lightgray",
+                   cursor="hand2",
+                   disabledforeground="gray",
+                   fg="black",
+                   font=("Arial", 12),
+                   height=2,
+                   highlightbackground="black",
+                   highlightcolor="green",
+                   highlightthickness=2,
+                   justify="center",
+                   overrelief="raised",
+                   padx=10,
+                   pady=5,
+                   width=15,
+                   wraplength=100)
+
+button_Clear = tk.Button(root,
+                   text="Load",
+                   command=UndoLoad(),
+                   activebackground="blue",
+                   activeforeground="white",
+                   anchor="center",
+                   bd=3,
+                   bg="lightgray",
+                   cursor="hand2",
+                   disabledforeground="gray",
+                   fg="black",
+                   font=("Arial", 12),
+                   height=2,
+                   highlightbackground="black",
+                   highlightcolor="green",
+                   highlightthickness=2,
+                   justify="center",
+                   overrelief="raised",
+                   padx=10,
+                   pady=5,
+                   width=15,
+                   wraplength=100)
+
+button_PenUp = tk.Button(root,
+                   text="PenUp",
+                   command=PenUp(),
+                   activebackground="blue",
+                   activeforeground="white",
+                   anchor="center",
+                   bd=3,
+                   bg="lightgray",
+                   cursor="hand2",
+                   disabledforeground="gray",
+                   fg="black",
+                   font=("Arial", 12),
+                   height=2,
+                   highlightbackground="black",
+                   highlightcolor="green",
+                   highlightthickness=2,
+                   justify="center",
+                   overrelief="raised",
+                   padx=10,
+                   pady=5,
+                   width=15,
+                   wraplength=100)
+
+button_PenDown = tk.Button(root,
+                   text="PenDown",
+                   command=PenDown(),
+                   activebackground="blue",
+                   activeforeground="white",
+                   anchor="center",
+                   bd=3,
+                   bg="lightgray",
+                   cursor="hand2",
+                   disabledforeground="gray",
+                   fg="black",
+                   font=("Arial", 12),
+                   height=2,
+                   highlightbackground="black",
+                   highlightcolor="green",
+                   highlightthickness=2,
+                   justify="center",
+                   overrelief="raised",
+                   padx=10,
+                   pady=5,
+                   width=15,
+                   wraplength=100)
+
+button_Color = tk.Button(root,
+                   text="Color",
+                   command=PenColor(),
+                   activebackground="blue",
+                   activeforeground="white",
+                   anchor="center",
+                   bd=3,
+                   bg="lightgray",
+                   cursor="hand2",
+                   disabledforeground="gray",
+                   fg="black",
+                   font=("Arial", 12),
+                   height=2,
+                   highlightbackground="black",
+                   highlightcolor="green",
+                   highlightthickness=2,
+                   justify="center",
+                   overrelief="raised",
+                   padx=10,
+                   pady=5,
+                   width=15,
+                   wraplength=100)
+
+button_save.pack(padx=20, pady=5)
+button_load.pack(padx=20, pady=5)
+button_Clear.pack(padx=20, pady=5)
+button_PenUp.pack(padx=20, pady=5)
+button_PenDown.pack(padx=20, pady=5)
+button_Color.pack(padx=20, pady=5)
+
+
+root.mainloop()
 
 main()
 
