@@ -12,14 +12,15 @@
 # licensed under a Creative Commons
 # Attribution-Noncommercial-Share Alike 3.0 United States License.
 ######################################################################
-import turtle                           # allows us to use the turtles library
+import tkinter as tk       # Python's most commonly used GUI package.
+import turtle  as turtle   # allows us to use the turtles library
+#hopefully tk doesn't override Turtle AGAIN
+
 from asyncio import wait_for
 from datetime import time
 from turtle import Turtle
 
 from pygame.time import delay
-
-import tkinter as tk       # Python's most commonly used GUI package.
 
 state_stack = [] # for undo function
 
@@ -105,49 +106,25 @@ box_turtle.pensize(2)
 
 #-------------------------------------
 # Main Program Start
+# IMPORT BUTTONS
 #-------------------------------------
 
-#Clicky Turtle is from T12  events and guis
-
-class ClickyTurtle:
-    def __init__(self):
-        self.wn = turtle.Screen()
-        self.wn.setup(700,700)
-        self.wn.title("T-PEN")
-        self.wn.bgcolor("lightgreen")
-        self.tess = turtle.Turtle()
-        self.tess.color("Black")
-        self.tess.pensize(1)
-        self.tess.turtlesize(0.5)
-        self.tess.shape("circle")
-
-        # NOTICE that the screen is responding to the click events!
-        self.wn.onclick(self.h1)      # Wire up a click handler to the window.
-
-        self.wn.mainloop()
-
-    def h1(self, x, y):
-        self.tess.goto(x, y)
-
-def main():
-    c = ClickyTurtle()
-
-def UndoSave():
+def undosave():
     "Creates a Savestate"
     print("Save Function Placeholder")
-
+    '''
     state = {
     'position': turtle.pos(),
     'pen_color': turtle.pencolor(),
     'pen_state': turtle.isdown()
     }
     state_stack.append(state)
+    '''
 
-
-def UndoLoad():
+def undoload():
     "Loads A Savestate"
     print("Load Function Placeholder")
-
+    '''
     if state_stack:
         last_state = state_stack.pop()
         turtle.penup()
@@ -155,33 +132,34 @@ def UndoLoad():
         if last_state['pen_state']:
             turtle.pendown()
         turtle.pencolor(last_state['pen_color'])#----FROM T12----
+    '''
 
-
-def Clear():
+def turtleclear():
     "Simulates erasing by drawing with a very, very large turtle that matches the background color."
+    turtle.goto(250, 250)
     print("Clear Function Placeholder")
 
-def PenUp():
+def turtleup():
     "Makes Pen Stop Drawing"
     print("PenUp Function Placeholder")
     turtle.penup()
 
-def PenDown():
+def turtledown():
     "Makes Pen Resume Drawing"
     print("PenDown Function Placeholder")
     turtle.pendown()
 
-def PenColor():
+def pencolor():
     "Changes Pen Color"
     print("PenColor Function Placeholder")
-    #    colors = ['purple', 'blue', 'green', 'yellow', 'orange', 'red', 'white']
-    #    box_turtle.color(colors[row])       # Set the turtles color on each row
+#    colors = ['purple', 'blue', 'green', 'yellow', 'orange', 'red', 'white']
+#    box_turtle.color(colors[1])       # Set the turtles color on each row
 
-root = tk.Tk()
+ClickyTurtle = tk.Tk()
 
-button_save = tk.Button(root,
+button_save = tk.Button(ClickyTurtle,
                    text="Save",
-                   command=UndoSave,
+                   command=undosave,
                    activebackground="blue",
                    activeforeground="white",
                    anchor="center",
@@ -202,9 +180,9 @@ button_save = tk.Button(root,
                    width=15,
                    wraplength=100)
 
-button_load = tk.Button(root,
+button_load = tk.Button(ClickyTurtle,
                    text="Load",
-                   command=UndoLoad(),
+                   command=undoload,
                    activebackground="blue",
                    activeforeground="white",
                    anchor="center",
@@ -225,9 +203,9 @@ button_load = tk.Button(root,
                    width=15,
                    wraplength=100)
 
-button_Clear = tk.Button(root,
-                   text="Load",
-                   command=UndoLoad(),
+button_Clear = tk.Button(ClickyTurtle,
+                   text="Clear",
+                   command=turtleclear,
                    activebackground="blue",
                    activeforeground="white",
                    anchor="center",
@@ -248,9 +226,9 @@ button_Clear = tk.Button(root,
                    width=15,
                    wraplength=100)
 
-button_PenUp = tk.Button(root,
-                   text="PenUp",
-                   command=PenUp(),
+button_PenUp = tk.Button(ClickyTurtle,
+                   text="Pen Up",
+                   command=turtleup,
                    activebackground="blue",
                    activeforeground="white",
                    anchor="center",
@@ -271,9 +249,9 @@ button_PenUp = tk.Button(root,
                    width=15,
                    wraplength=100)
 
-button_PenDown = tk.Button(root,
-                   text="PenDown",
-                   command=PenDown(),
+button_PenDown = tk.Button(ClickyTurtle,
+                   text="Pen Down",
+                   command=turtledown,
                    activebackground="blue",
                    activeforeground="white",
                    anchor="center",
@@ -294,9 +272,9 @@ button_PenDown = tk.Button(root,
                    width=15,
                    wraplength=100)
 
-button_Color = tk.Button(root,
-                   text="Color",
-                   command=PenColor(),
+button_Color = tk.Button(ClickyTurtle,
+                   text="Pen Color",
+                   command=pencolor,
                    activebackground="blue",
                    activeforeground="white",
                    anchor="center",
@@ -324,8 +302,31 @@ button_PenUp.pack(padx=20, pady=5)
 button_PenDown.pack(padx=20, pady=5)
 button_Color.pack(padx=20, pady=5)
 
+#Drawing Screen Import
+#(Clicky Turtle is from T12  events and guis)
 
-root.mainloop()
+class ClickyTurtle:
+    def __init__(self):
+        self.wn = turtle.Screen()
+        self.wn.setup(700,700)
+        self.wn.title("T-PEN")
+        self.wn.bgcolor("lightgreen")
+        self.tess = turtle.Turtle()
+        self.tess.color("Black")
+        self.tess.pensize(1)
+        self.tess.turtlesize(0.5)
+        self.tess.shape("circle")
+
+        # NOTICE that the screen is responding to the click events!
+        self.wn.onclick(self.h1)      # Wire up a click handler to the window.
+
+        self.wn.mainloop()
+
+    def h1(self, x, y):
+        self.tess.goto(x, y)
+
+def main():
+    c = ClickyTurtle()
 
 main()
 
