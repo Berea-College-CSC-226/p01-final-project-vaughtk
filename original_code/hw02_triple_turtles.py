@@ -114,9 +114,9 @@ def undosave():
     print("Save Function Placeholder")
     '''
     state = {
-    'position': turtle.pos(),
-    'pen_color': turtle.pencolor(),
-    'pen_state': turtle.isdown()
+    'position': turtle.pos(ClickyTurtle),
+    'pen_color': turtle.pencolor(ClickyTurtle),
+    'pen_state': turtle.isdown(ClickyTurtle)
     }
     state_stack.append(state)
     '''
@@ -126,34 +126,13 @@ def undoload():
     print("Load Function Placeholder")
     '''
     if state_stack:
-        last_state = state_stack.pop()
-        turtle.penup()
+        last_state = state_stack.pop(ClickyTurtle)
+        turtle.penup(ClickyTurtle)
         turtle.goto(last_state['position'])
         if last_state['pen_state']:
-            turtle.pendown()
+            turtle.pendown(ClickyTurtle)
         turtle.pencolor(last_state['pen_color'])#----FROM T12----
     '''
-
-def turtleclear():
-    "Simulates erasing by drawing with a very, very large turtle that matches the background color."
-    turtle.goto(250, 250)
-    print("Clear Function Placeholder")
-
-def turtleup():
-    "Makes Pen Stop Drawing"
-    print("PenUp Function Placeholder")
-    turtle.penup()
-
-def turtledown():
-    "Makes Pen Resume Drawing"
-    print("PenDown Function Placeholder")
-    turtle.pendown()
-
-def pencolor():
-    "Changes Pen Color"
-    print("PenColor Function Placeholder")
-#    colors = ['purple', 'blue', 'green', 'yellow', 'orange', 'red', 'white']
-#    box_turtle.color(colors[1])       # Set the turtles color on each row
 
 ClickyTurtle = tk.Tk()
 
@@ -324,6 +303,28 @@ class ClickyTurtle:
 
     def h1(self, x, y):
         self.tess.goto(x, y)
+
+    def turtle_clear(self):
+        "Uses the TurtleClear command"
+        self.tess.clear()  # Clears the screen
+        print("Clear Function Placeholder")
+
+    def turtle_up(self):
+        "Makes Pen Stop Drawing"
+        self.tess.penup()  # Lifts the pen so the turtle doesn't draw while moving
+        print("PenUp Function Placeholder")
+
+    def turtle_down(self):
+        "Makes Pen Resume Drawing"
+        self.tess.pendown()  # Puts the pen down so the turtle draws as it moves
+        print("PenDown Function Placeholder")
+
+    def pen_color(self, color):
+        "Changes Pen Color"
+        self.tess.color(color)
+        print("Pencolor Function Placeholder")
+    #   colors = ['purple', 'blue', 'green', 'yellow', 'orange', 'red', 'white']
+    #   turtle.color(colors[1])       # Set the turtles color on each row
 
 def main():
     c = ClickyTurtle()
