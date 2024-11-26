@@ -109,31 +109,6 @@ box_turtle.pensize(2)
 # IMPORT BUTTONS
 #-------------------------------------
 
-def undosave():
-    "Creates a Savestate"
-    print("Save Function Placeholder")
-    '''
-    state = {
-    'position': turtle.pos(ClickyTurtle),
-    'pen_color': turtle.pencolor(ClickyTurtle),
-    'pen_state': turtle.isdown(ClickyTurtle)
-    }
-    state_stack.append(state)
-    '''
-
-def undoload():
-    "Loads A Savestate"
-    print("Load Function Placeholder")
-    '''
-    if state_stack:
-        last_state = state_stack.pop(ClickyTurtle)
-        turtle.penup(ClickyTurtle)
-        turtle.goto(last_state['position'])
-        if last_state['pen_state']:
-            turtle.pendown(ClickyTurtle)
-        turtle.pencolor(last_state['pen_color'])#----FROM T12----
-    '''
-
 ClickyTurtle = tk.Tk()
 
 button_save = tk.Button(ClickyTurtle,
@@ -325,6 +300,31 @@ class ClickyTurtle:
         print("Pencolor Function Placeholder")
     #   colors = ['purple', 'blue', 'green', 'yellow', 'orange', 'red', 'white']
     #   turtle.color(colors[1])       # Set the turtles color on each row
+
+    def undosave(self):
+        "Creates a Savestate"
+        print("Save Function Placeholder")
+        '''
+        state = {
+        'position': turtle.pos(ClickyTurtle),
+        'pen_color': turtle.pencolor(ClickyTurtle),
+        'pen_state': turtle.isdown(ClickyTurtle)
+        }
+        state_stack.append(state)
+        '''
+
+    def undoload(self):
+        "Loads A Savestate"
+        print("Load Function Placeholder")
+        '''
+        if state_stack:
+            last_state = state_stack.pop(ClickyTurtle)
+            turtle.penup(ClickyTurtle)
+            turtle.goto(last_state['position'])
+            if last_state['pen_state']:
+                turtle.pendown(ClickyTurtle)
+            turtle.pencolor(last_state['pen_color'])#----FROM T12----
+        '''
 
 def main():
     c = ClickyTurtle()
