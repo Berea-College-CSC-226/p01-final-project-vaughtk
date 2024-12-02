@@ -14,9 +14,10 @@
 ######################################################################
 import tkinter as tk       # Python's most commonly used GUI package.
 import turtle  as turtle   # allows us to use the turtles library
-#hopefully tk doesn't override Turtle AGAIN
+                            #hopefully tk doesn't override Turtle AGAIN
 
 from asyncio import wait_for
+
 from datetime import time
 from turtle import Turtle
 
@@ -113,7 +114,7 @@ ClickyTurtle = tk.Tk()
 
 button_save = tk.Button(ClickyTurtle,
                    text="Save",
-                   command=undosave,
+                   command="undo_save",
                    activebackground="blue",
                    activeforeground="white",
                    anchor="center",
@@ -136,7 +137,7 @@ button_save = tk.Button(ClickyTurtle,
 
 button_load = tk.Button(ClickyTurtle,
                    text="Load",
-                   command=undoload,
+                   command="undo_load",
                    activebackground="blue",
                    activeforeground="white",
                    anchor="center",
@@ -159,7 +160,7 @@ button_load = tk.Button(ClickyTurtle,
 
 button_Clear = tk.Button(ClickyTurtle,
                    text="Clear",
-                   command=turtleclear,
+                   command="turtle_clear",
                    activebackground="blue",
                    activeforeground="white",
                    anchor="center",
@@ -182,7 +183,7 @@ button_Clear = tk.Button(ClickyTurtle,
 
 button_PenUp = tk.Button(ClickyTurtle,
                    text="Pen Up",
-                   command=turtleup,
+                   command="turtle_up",
                    activebackground="blue",
                    activeforeground="white",
                    anchor="center",
@@ -205,7 +206,7 @@ button_PenUp = tk.Button(ClickyTurtle,
 
 button_PenDown = tk.Button(ClickyTurtle,
                    text="Pen Down",
-                   command=turtledown,
+                   command="turtle_down",
                    activebackground="blue",
                    activeforeground="white",
                    anchor="center",
@@ -228,7 +229,7 @@ button_PenDown = tk.Button(ClickyTurtle,
 
 button_Color = tk.Button(ClickyTurtle,
                    text="Pen Color",
-                   command=pencolor,
+                   command="pen_color",
                    activebackground="blue",
                    activeforeground="white",
                    anchor="center",
@@ -264,7 +265,7 @@ class ClickyTurtle:
         self.wn = turtle.Screen()
         self.wn.setup(700,700)
         self.wn.title("T-PEN")
-        self.wn.bgcolor("lightgreen")
+        self.wn.bgcolor("white")
         self.tess = turtle.Turtle()
         self.tess.color("Black")
         self.tess.pensize(1)
@@ -298,10 +299,11 @@ class ClickyTurtle:
         "Changes Pen Color"
         self.tess.color(color)
         print("Pencolor Function Placeholder")
-    #   colors = ['purple', 'blue', 'green', 'yellow', 'orange', 'red', 'white']
-    #   turtle.color(colors[1])       # Set the turtles color on each row
+        colors = ['purple', 'blue', 'green', 'yellow', 'orange', 'red', 'white'] #List that turtle Tess takes colors from
+        self.tess.color(colors[1])       # Cycles the turtle's color
+        self.tess.pencolor(colors[1])  # Cycles the turtle's pen color
 
-    def undosave(self):
+    def undo_save(self):
         "Creates a Savestate"
         print("Save Function Placeholder")
         '''
@@ -313,7 +315,7 @@ class ClickyTurtle:
         state_stack.append(state)
         '''
 
-    def undoload(self):
+    def undo_load(self):
         "Loads A Savestate"
         print("Load Function Placeholder")
         '''
