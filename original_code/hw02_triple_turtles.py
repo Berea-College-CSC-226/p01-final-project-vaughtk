@@ -1,6 +1,6 @@
 ######################################################################
-# Author: Dr. Scott Heggen           TODO: Change this to your name, if modifying
-# Username: heggens                  TODO: Change this to your username, if modifying
+# Author: Kai Vaught
+# Username: VaughtK
 
 # Assignment: HW02: Loopy Turtles, Loopy Languages
 # Purpose: Draws a 3D cube using turtles and nested for loops
@@ -21,7 +21,7 @@ from asyncio import wait_for
 from datetime import time
 from turtle import Turtle
 
-from pygame.time import delay
+from pygame.time import delay #to keep delays
 
 state_stack = [] # for undo function
 
@@ -306,27 +306,10 @@ class ClickyTurtle:
     def undo_save(self):
         "Creates a Savestate"
         print("Save Function Placeholder")
-        '''
-        state = {
-        'position': turtle.pos(ClickyTurtle),
-        'pen_color': turtle.pencolor(ClickyTurtle),
-        'pen_state': turtle.isdown(ClickyTurtle)
-        }
-        state_stack.append(state)
-        '''
 
     def undo_load(self):
         "Loads A Savestate"
         print("Load Function Placeholder")
-        '''
-        if state_stack:
-            last_state = state_stack.pop(ClickyTurtle)
-            turtle.penup(ClickyTurtle)
-            turtle.goto(last_state['position'])
-            if last_state['pen_state']:
-                turtle.pendown(ClickyTurtle)
-            turtle.pencolor(last_state['pen_color'])#----FROM T12----
-        '''
 
 def main():
     c = ClickyTurtle()
