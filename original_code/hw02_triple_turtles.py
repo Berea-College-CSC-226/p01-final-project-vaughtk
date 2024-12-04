@@ -23,8 +23,6 @@ from turtle import Turtle
 
 from pygame.time import delay #to keep delays
 
-state_stack = [] # for undo function
-
 height = 100
 width = 100
 depth = 15
@@ -44,15 +42,6 @@ box_turtle.shapesize(5)
 
 for row in range(6):                    # Loop for the rows
     box_turtle.color(colors[row])       # Set the turtles color on each row
-    for col in range(7):                # Loop for the columns
-        for dep in range(1):            # Loop for the depth
-            # Moves box_turtle to a position based on row, col, and dep
-            box_turtle.goto(col * width - 300 + dep * depth, row * height - 250 + dep * depth * 0.7)
-            box_turtle.stamp()          # Stamps the shape onto the window
-            box_turtle.stamp()          # Stamps the shape onto the window
-colors_undo = ['white','white','white','white','white','white']
-for row in range(6):                    # Loop for the rows
-    box_turtle.color(colors_undo[row])       # Set the turtles color on each row
     for col in range(7):                # Loop for the columns
         for dep in range(1):            # Loop for the depth
             # Moves box_turtle to a position based on row, col, and dep
@@ -112,51 +101,6 @@ box_turtle.pensize(2)
 
 ClickyTurtle = tk.Tk()
 
-button_save = tk.Button(ClickyTurtle,
-                   text="Save",
-                   command="undo_save",
-                   activebackground="blue",
-                   activeforeground="white",
-                   anchor="center",
-                   bd=3,
-                   bg="lightgray",
-                   cursor="hand2",
-                   disabledforeground="gray",
-                   fg="black",
-                   font=("Arial", 12),
-                   height=2,
-                   highlightbackground="black",
-                   highlightcolor="green",
-                   highlightthickness=2,
-                   justify="center",
-                   overrelief="raised",
-                   padx=10,
-                   pady=5,
-                   width=15,
-                   wraplength=100)
-
-button_load = tk.Button(ClickyTurtle,
-                   text="Load",
-                   command="undo_load",
-                   activebackground="blue",
-                   activeforeground="white",
-                   anchor="center",
-                   bd=3,
-                   bg="lightgray",
-                   cursor="hand2",
-                   disabledforeground="gray",
-                   fg="black",
-                   font=("Arial", 12),
-                   height=2,
-                   highlightbackground="black",
-                   highlightcolor="green",
-                   highlightthickness=2,
-                   justify="center",
-                   overrelief="raised",
-                   padx=10,
-                   pady=5,
-                   width=15,
-                   wraplength=100)
 
 button_Clear = tk.Button(ClickyTurtle,
                    text="Clear",
@@ -250,8 +194,6 @@ button_Color = tk.Button(ClickyTurtle,
                    width=15,
                    wraplength=100)
 
-button_save.pack(padx=20, pady=5)
-button_load.pack(padx=20, pady=5)
 button_Clear.pack(padx=20, pady=5)
 button_PenUp.pack(padx=20, pady=5)
 button_PenDown.pack(padx=20, pady=5)
@@ -302,14 +244,6 @@ class ClickyTurtle:
         colors = ['purple', 'blue', 'green', 'yellow', 'orange', 'red', 'white'] #List that turtle Tess takes colors from
         self.tess.color(colors[1])       # Cycles the turtle's color
         self.tess.pencolor(colors[1])  # Cycles the turtle's pen color
-
-    def undo_save(self):
-        "Creates a Savestate"
-        print("Save Function Placeholder")
-
-    def undo_load(self):
-        "Loads A Savestate"
-        print("Load Function Placeholder")
 
 def main():
     c = ClickyTurtle()
