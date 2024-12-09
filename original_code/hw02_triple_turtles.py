@@ -41,6 +41,18 @@ class TPen:
         self.wn.title("T-PEN")
         self.wn.bgcolor("white")
         self.c = ClickyTurtle(self.wn)
+
+        # Tutorial
+        print(
+            "HOTKEYS: Number Rows = Pen/Turtle Sizes F - ; = Colors <, and >. = Pen Down and Pen Up BackSpace = Clear. WASD + ARROWS = MOVE")
+        self.c.penup()
+        self.c.forward(-305)
+        self.c.write("Number Rows = Pen/Turtle Sizes F thru ; = Colors <, and >. = Pen Down and Pen Up BackSpace = Clear. WASD + ARROWS = MOVE")
+        self.c.forward(305)
+        self.c.pendown()
+        # Tutorial
+
+
         self.wn.onkey(self.c.go_up, "Up")
         self.wn.onkey(self.c.go_up, "w")
         self.wn.onkey(self.c.go_down, "Down")
@@ -78,6 +90,7 @@ class TPen:
         self.c.goto(+-1, 0)
         self.wn.listen()
         self.wn.mainloop()
+
 #Drawing Screen Import
 #(Clicky Turtle is from T12  events and guis)
 
