@@ -1,17 +1,8 @@
 ######################################################################
 # Author: Kai Vaught
 # Username: VaughtK
-
-# Assignment: HW02: Loopy Turtles, Loopy Languages
-# Purpose: Draws a 3D cube using turtles and nested for loops
 ######################################################################
-# Acknowledgements:
 
-# Original code by: Dr. Scott Heggen
-
-# licensed under a Creative Commons
-# Attribution-Noncommercial-Share Alike 3.0 United States License.
-######################################################################
 import tkinter as tk       # Python's most commonly used GUI package.
 import turtle   # allows us to use the turtles library
 from asyncio import wait_for
@@ -216,126 +207,6 @@ class ClickyTurtle(turtle.Turtle):
     # Main Program Start
     # IMPORT BUTTONS
     # -------------------------------------
-
-'''
-    ui = tk.Tk()
-
-    button_Clear = tk.Button(ui,
-                             text="Clear (BCK-SPC)",
-                             command=button_turtle_clear,
-                             bd=3,
-                             bg="lightgray",
-                             font=("Arial", 12),
-                             height=2,
-                             highlightthickness=2,
-                             padx=10,
-                             pady=5,
-                             width=15,
-                             wraplength=100)
-
-    button_PenUp = tk.Button(ui,
-                             text="Pen Up (,<)",
-                             command="turtle_up",
-                             activebackground="blue",
-                             activeforeground="white",
-                             anchor="center",
-                             bd=3,
-                             bg="lightgray",
-                             cursor="hand2",
-                             disabledforeground="gray",
-                             fg="black",
-                             font=("Arial", 12),
-                             height=2,
-                             highlightbackground="black",
-                             highlightcolor="green",
-                             highlightthickness=2,
-                             justify="center",
-                             overrelief="raised",
-                             padx=10,
-                             pady=5,
-                             width=15,
-                             wraplength=100)
-
-    button_PenDown = tk.Button(ui,
-                               text="Pen Down(.>)",
-                               command="turtle_down",
-                               activebackground="blue",
-                               activeforeground="white",
-                               anchor="center",
-                               bd=3,
-                               bg="lightgray",
-                               cursor="hand2",
-                               disabledforeground="gray",
-                               fg="black",
-                               font=("Arial", 12),
-                               height=2,
-                               highlightbackground="black",
-                               highlightcolor="green",
-                               highlightthickness=2,
-                               justify="center",
-                               overrelief="raised",
-                               padx=10,
-                               pady=5,
-                               width=15,
-                               wraplength=100)
-
-    button_Color = tk.Button(ui,
-                             text="Pen Color (SPACE)",
-                             command="pen_color",
-                             activebackground="blue",
-                             activeforeground="white",
-                             anchor="center",
-                             bd=3,
-                             bg="lightgray",
-                             cursor="hand2",
-                             disabledforeground="gray",
-                             fg="black",
-                             font=("Arial", 12),
-                             height=2,
-                             highlightbackground="black",
-                             highlightcolor="green",
-                             highlightthickness=2,
-                             justify="center",
-                             overrelief="raised",
-                             padx=10,
-                             pady=5,
-                             width=15,
-                             wraplength=100)
-
-    button_Clear.pack(padx=20, pady=5)
-    button_PenUp.pack(padx=20, pady=5)
-    button_PenDown.pack(padx=20, pady=5)
-    button_Color.pack(padx=20, pady=5)
-
-
-
-                THESE ARE ALL DEPRECATED
-
-            def turtle_clear_deprecated(self):
-                "Uses the TurtleClear command"
-                self.clear()  # Clears the screen
-        
-            def turtle_up(self):
-                "Makes Pen Stop Drawing"
-                self.penup()  # Lifts the pen so the turtle doesn't draw while moving
-                print("PenUp Function Placeholder")
-        
-            def turtle_down(self):
-                "Makes Pen Resume Drawing"
-                self.pendown()  # Puts the pen down so the turtle draws as it moves
-                print("PenDown Function Placeholder")
-        
-            def pen_color(self, color):
-                "Changes Pen Color"
-                self.color(color)
-                print("Pencolor Function Placeholder")
-                colors = ['purple', 'blue', 'green', 'yellow', 'orange', 'red', 'white'] #List that turtle Tess takes colors from
-                self.color(colors[1])       # Cycles the turtle's color
-                self.pencolor(colors[1])  # Cycles the turtle's pen color
-        
-            def listen(self, xdummy, ydummy):
-                pass
-'''
 
 def main():
     c = TPen()
